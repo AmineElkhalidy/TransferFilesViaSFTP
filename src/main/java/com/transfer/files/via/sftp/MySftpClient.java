@@ -35,6 +35,9 @@ public class MySftpClient {
                         if (commandParts.length > 1) listLocalFiles(commandParts[1]);
                         else listLocalFiles(channelSftp.lpwd());
                         break;
+                    case SftpCommands.PUT:
+                        putFile(commandParts[1], commandParts[2]);
+                        break;
                     default:
                         System.out.println("Invalid command !");
                         break;
@@ -106,6 +109,14 @@ public class MySftpClient {
             for (String name : names) {
                 System.out.println(name);
             }
+        }
+    }
+
+    private static void putFile(String from, String to) {
+        try {
+            channelSftp.put(from, to);
+        } catch (SftpException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
