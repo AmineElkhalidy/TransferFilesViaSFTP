@@ -19,5 +19,6 @@ public class SftpCommands {
     public static final String EXIT = "exit";
     public static final String QUIT = "quit";
     public static final String BYE = "bye";
+    public static final String HELP = "help";
 
 }

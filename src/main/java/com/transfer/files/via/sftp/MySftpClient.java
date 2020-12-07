@@ -69,6 +69,10 @@ public class MySftpClient {
                     case SftpCommands.CHMOD:
                         chmod(commandParts[1], commandParts[2]);
                         break;
+                    case SftpCommands.HELP:
+                    case "?":
+                        help();
+                        break;
                     case SftpCommands.EXIT:
                     case SftpCommands.BYE:
                     case SftpCommands.QUIT:
@@ -230,5 +234,43 @@ public class MySftpClient {
         } catch (SftpException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void help() {
+        System.out.println("Available commands :");
+        System.out.println(
+                "bye                                Quit sftp\n" +
+                        SftpCommands.CD +
+                        " path                          Change remote directory to 'path'\n" +
+                        SftpCommands.CHMOD +
+                        " mode path                    Change permissions of file 'path' to 'mode'\n" +
+                        SftpCommands.EXIT +
+                        "                               Quit sftp\n" +
+                        SftpCommands.GET +
+                        " remote [local]            Download file\n" +
+                        SftpCommands.HELP +
+                        "                               Display this help text\n" +
+                        SftpCommands.LCD +
+                        " path                         Change local directory to 'path'\n" +
+                        SftpCommands.LLS +
+                        " [ls-options [path]]          Display local directory listing\n" +
+                        SftpCommands.LMKDIR +
+                        " path                       Create local directory\n" +
+                        SftpCommands.LS +
+                        " [path]                        Display remote directory listing\n" +
+                        SftpCommands.MKDIR +
+                        " path                        Create remote directory\n" +
+                        SftpCommands.PUT +
+                        " local [remote]              Upload file\n" +
+                        SftpCommands.QUIT +
+                        "                               Quit sftp\n" +
+                        SftpCommands.RENAME +
+                        " oldpath newpath             Rename remote file\n" +
+                        SftpCommands.RM +
+                        " path                        Delete remote file\n" +
+                        SftpCommands.RMDIR +
+                        " path                     Delete remote directory\n" +
+                        "?                              Synonym for help\n"
+        );
     }
 }
