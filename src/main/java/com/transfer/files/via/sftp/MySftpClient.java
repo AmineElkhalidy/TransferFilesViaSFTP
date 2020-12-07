@@ -3,6 +3,10 @@ package com.transfer.files.via.sftp;
 import com.jcraft.jsch.*;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -55,6 +59,9 @@ public class MySftpClient {
                         break;
                     case SftpCommands.MKDIR:
                         create(commandParts[1]);
+                        break;
+                    case SftpCommands.LMKDIR:
+                        lCreate(commandParts[1]);
                         break;
                     default:
                         System.out.println("Invalid command !");
@@ -175,11 +182,22 @@ public class MySftpClient {
             System.out.println(e.getMessage());
         }
     }
+
     private static void create(String path) {
         try {
             channelSftp.mkdir(path);
             System.out.println("The directory : " + path + " has been created successfully !");
         } catch (SftpException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void lCreate(String path) {
+        try {
+            Path thePath = Paths.get(path);
+            Files.createDirectories(thePath);
+            System.out.println("The directory : " + path + " has been created successfully !");
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
