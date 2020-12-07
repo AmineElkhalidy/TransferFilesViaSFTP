@@ -2,6 +2,7 @@ package com.transfer.files.via.sftp;
 
 import com.jcraft.jsch.*;
 
+import java.io.File;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -29,6 +30,10 @@ public class MySftpClient {
                     case SftpCommands.LS:
                         if (commandParts.length > 1) listFiles(commandParts[1]);
                         else listFiles(".");
+                        break;
+                    case SftpCommands.LLS:
+                        if (commandParts.length > 1) listLocalFiles(commandParts[1]);
+                        else listLocalFiles(channelSftp.lpwd());
                         break;
                     default:
                         System.out.println("Invalid command !");
@@ -90,6 +95,17 @@ public class MySftpClient {
             }
         } catch (SftpException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    private static void listLocalFiles(String path) {
+        System.out.println(path);
+        File file = new File(path);
+        String[] names = file.list();
+        if (names != null) {
+            for (String name : names) {
+                System.out.println(name);
+            }
         }
     }
 }
