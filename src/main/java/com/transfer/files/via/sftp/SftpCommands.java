@@ -14,5 +14,6 @@ public class SftpCommands {
     public static final String RMDIR = "removedir";
     public static final String MKDIR = "create";
     public static final String LMKDIR = "lcreate";
+    public static final String RENAME = "rename";
 
 }

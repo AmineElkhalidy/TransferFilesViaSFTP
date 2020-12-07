@@ -63,6 +63,9 @@ public class MySftpClient {
                     case SftpCommands.LMKDIR:
                         lCreate(commandParts[1]);
                         break;
+                    case SftpCommands.RENAME:
+                        rename(commandParts[1], commandParts[2]);
+                        break;
                     default:
                         System.out.println("Invalid command !");
                         break;
@@ -198,6 +201,14 @@ public class MySftpClient {
             Files.createDirectories(thePath);
             System.out.println("The directory : " + path + " has been created successfully !");
         } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void rename(String from, String to) {
+        try {
+            channelSftp.rename(from, to);
+        } catch (SftpException e) {
             System.out.println(e.getMessage());
         }
     }
