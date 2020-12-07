@@ -22,6 +22,9 @@ public class MySftpClient {
                     case SftpCommands.CD:
                         goTo(commandParts[1]);
                         break;
+                    case SftpCommands.LCD:
+                        lGoTo(commandParts[1]);
+                        break;
                     default:
                         System.out.println("Invalid command !");
                         break;
@@ -53,6 +56,14 @@ public class MySftpClient {
     private static void goTo(String path) {
         try {
             channelSftp.cd(path);
+        } catch (SftpException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void lGoTo(String path) {
+        try {
+            channelSftp.lcd(path);
         } catch (SftpException e) {
             System.out.println(e.getMessage());
         }
