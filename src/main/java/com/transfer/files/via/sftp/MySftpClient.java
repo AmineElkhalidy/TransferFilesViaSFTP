@@ -38,6 +38,9 @@ public class MySftpClient {
                     case SftpCommands.PUT:
                         putFile(commandParts[1], commandParts[2]);
                         break;
+                    case SftpCommands.GET:
+                        getFile(commandParts[1], commandParts[2]);
+                        break;
                     default:
                         System.out.println("Invalid command !");
                         break;
@@ -115,6 +118,14 @@ public class MySftpClient {
     private static void putFile(String from, String to) {
         try {
             channelSftp.put(from, to);
+        } catch (SftpException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void getFile(String from, String to) {
+        try {
+            channelSftp.get(from, to);
         } catch (SftpException e) {
             System.out.println(e.getMessage());
         }

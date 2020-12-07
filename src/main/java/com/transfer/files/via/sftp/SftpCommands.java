@@ -7,5 +7,6 @@ public class SftpCommands {
     public static final String LS = "list";
     public static final String LLS = "llist";
     public static final String PUT = "upload";
+    public static final String GET = "download";
 
 }
