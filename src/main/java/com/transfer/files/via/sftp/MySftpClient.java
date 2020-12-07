@@ -69,6 +69,14 @@ public class MySftpClient {
                     case SftpCommands.CHMOD:
                         chmod(commandParts[1], commandParts[2]);
                         break;
+                    case SftpCommands.EXIT:
+                    case SftpCommands.BYE:
+                    case SftpCommands.QUIT:
+                        if (jschSession != null) {
+                            channelSftp.exit();
+                            jschSession.disconnect();
+                        }
+                        return;
                     default:
                         System.out.println("Invalid command !");
                         break;
