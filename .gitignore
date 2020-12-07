@@ -10,7 +10,7 @@
 build/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
-
+key.ser
 # Package Files #
 *.jar
 *.war
