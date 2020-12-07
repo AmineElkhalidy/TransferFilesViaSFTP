@@ -53,6 +53,9 @@ public class MySftpClient {
                     case SftpCommands.RMDIR:
                         removeDir(commandParts[1]);
                         break;
+                    case SftpCommands.MKDIR:
+                        create(commandParts[1]);
+                        break;
                     default:
                         System.out.println("Invalid command !");
                         break;
@@ -168,6 +171,14 @@ public class MySftpClient {
         try {
             channelSftp.rmdir(name);
             System.out.println("The directory : " + name + " has been removed successfully !");
+        } catch (SftpException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    private static void create(String path) {
+        try {
+            channelSftp.mkdir(path);
+            System.out.println("The directory : " + path + " has been created successfully !");
         } catch (SftpException e) {
             System.out.println(e.getMessage());
         }
