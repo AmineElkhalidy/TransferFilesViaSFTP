@@ -15,5 +15,6 @@ public class SftpCommands {
     public static final String MKDIR = "create";
     public static final String LMKDIR = "lcreate";
     public static final String RENAME = "rename";
+    public static final String CHMOD = "chmod";
 
 }

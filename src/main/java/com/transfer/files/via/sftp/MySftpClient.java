@@ -66,6 +66,9 @@ public class MySftpClient {
                     case SftpCommands.RENAME:
                         rename(commandParts[1], commandParts[2]);
                         break;
+                    case SftpCommands.CHMOD:
+                        chmod(commandParts[1], commandParts[2]);
+                        break;
                     default:
                         System.out.println("Invalid command !");
                         break;
@@ -208,6 +211,14 @@ public class MySftpClient {
     private static void rename(String from, String to) {
         try {
             channelSftp.rename(from, to);
+        } catch (SftpException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void chmod(String mode, String path) {
+        try {
+            channelSftp.chmod(Integer.parseInt(mode), path);
         } catch (SftpException e) {
             System.out.println(e.getMessage());
         }
