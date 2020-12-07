@@ -10,5 +10,6 @@ public class SftpCommands {
     public static final String GET = "download";
     public static final String PWD = "where";
     public static final String LPWD = "lwhere";
+    public static final String RM = "remove";
 
 }

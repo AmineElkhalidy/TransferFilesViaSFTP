@@ -47,6 +47,9 @@ public class MySftpClient {
                     case SftpCommands.LPWD:
                         lWhere();
                         break;
+                    case SftpCommands.RM:
+                        remove(commandParts[1]);
+                        break;
                     default:
                         System.out.println("Invalid command !");
                         break;
@@ -147,5 +150,14 @@ public class MySftpClient {
 
     private static void lWhere() {
         System.out.println(channelSftp.lpwd());
+    }
+
+    private static void remove(String name) {
+        try {
+            channelSftp.rm(name);
+            System.out.println("The file : " + name + " has been removed successfully !");
+        } catch (SftpException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
