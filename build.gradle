@@ -17,6 +17,7 @@ dependencies {
     implementation 'org.apache.sshd:sshd-scp:2.5.1'
     implementation 'org.slf4j:slf4j-simple:1.7.25'
     implementation 'commons-net:commons-net:3.7.2'
+    implementation 'com.jcraft:jsch:0.1.55'
 }
 
 test {
