@@ -41,6 +41,9 @@ public class MySftpClient {
                     case SftpCommands.GET:
                         getFile(commandParts[1], commandParts[2]);
                         break;
+                    case SftpCommands.PWD:
+                        where();
+                        break;
                     default:
                         System.out.println("Invalid command !");
                         break;
@@ -126,6 +129,14 @@ public class MySftpClient {
     private static void getFile(String from, String to) {
         try {
             channelSftp.get(from, to);
+        } catch (SftpException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void where() {
+        try {
+            System.out.println(channelSftp.pwd());
         } catch (SftpException e) {
             System.out.println(e.getMessage());
         }
