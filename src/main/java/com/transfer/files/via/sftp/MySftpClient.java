@@ -44,6 +44,9 @@ public class MySftpClient {
                     case SftpCommands.PWD:
                         where();
                         break;
+                    case SftpCommands.LPWD:
+                        lWhere();
+                        break;
                     default:
                         System.out.println("Invalid command !");
                         break;
@@ -140,5 +143,9 @@ public class MySftpClient {
         } catch (SftpException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void lWhere() {
+        System.out.println(channelSftp.lpwd());
     }
 }
