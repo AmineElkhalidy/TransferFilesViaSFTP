@@ -26,17 +26,20 @@ This project is built with these libraries :
 In order to run this project, you need to install any JAVA IDE (IntelliJ IDEA is preferred) and JDK 8.
 
 ## Screenshots
-
+1 - Upload a file :
 ![](screenshot1.png)
 
+2 - Download a file :
 ![](screenshot2.png)
 
+3 - Other Commands :
 ![](screenshot3.png)
 
 
 ## Usage
 
 Available commands :
+```
 bye                                Quit sftp
 goto path                          Change remote directory to 'path'
 chmod mode path                    Change permissions of file 'path' to 'mode'
@@ -54,7 +57,7 @@ rename oldpath newpath             Rename remote file
 remove path                        Delete remote file
 removedir path                     Delete remote directory
 ?                                  Synonym for help
-
+```
 
 ## Examples
 
@@ -107,6 +110,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Amine Elkhalidy - amineelkhalidy.a@gmail.com
-Karima Jarmoumi - karima.jarmoumi@gmail.com
-Safaa Khadda - khaddasafaa@gmail.com
+- Amine Elkhalidy - amineelkhalidy.a@gmail.com
+- Karima Jarmoumi - karima.jarmoumi@gmail.com
+- Safaa Khadda - khaddasafaa@gmail.com
